@@ -13,15 +13,25 @@ where py >nul 2>&1
 if %errorlevel%==0 (set "PY=py -3") else (set "PY=python")
 
 echo.
-echo === Step 1/2: installing dependencies ===
+echo === Step 1/3: installing dependencies ===
 %PY% -m pip install --upgrade pip
 %PY% -m pip install --only-binary=:all: -r requirements.txt pyinstaller pyinstaller-hooks-contrib
 if errorlevel 1 goto :error
 
 echo.
-echo === Step 2/2: building the app (this takes a minute) ===
+echo === Step 2/3: building the app (this takes a minute) ===
 %PY% build.py
 if errorlevel 1 goto :error
+
+echo.
+echo === Step 3/3: packaging a release-ready zip ===
+powershell -NoProfile -Command "Compress-Archive -Path 'dist\PDF Color Check' -DestinationPath 'dist\PDF-Color-Check-Windows.zip' -Force"
+if errorlevel 1 (
+    echo WARNING: could not create the zip automatically.
+    echo You can still zip the "dist\PDF Color Check" folder manually.
+) else (
+    echo Created: dist\PDF-Color-Check-Windows.zip
+)
 
 echo.
 echo ============================================================
@@ -29,9 +39,11 @@ echo  Build complete.
 echo  Your app is here:
 echo      dist\PDF Color Check\PDF Color Check.exe
 echo.
-echo  To move it to another Windows PC, copy the WHOLE
-echo  "dist\PDF Color Check" folder (zip it first), then run
-echo  "PDF Color Check.exe" inside it.
+echo  Release-ready zip (upload this to a GitHub Release):
+echo      dist\PDF-Color-Check-Windows.zip
+echo.
+echo  To run on another Windows PC, unzip it and launch
+echo  "PDF Color Check.exe" inside the folder.
 echo ============================================================
 echo.
 pause

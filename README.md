@@ -82,25 +82,28 @@ python3 build.py          # -> dist/PDF Color Check.app
 **Windows:** copy this whole project folder to a Windows PC that has
 [Python 3.10+](https://www.python.org/downloads/) installed (tick *"Add Python
 to PATH"* in the installer), then **double-click `build_windows.bat`**. It
-installs the dependencies and builds:
+installs the dependencies, builds the app, and zips it:
 
 ```
-dist\PDF Color Check\PDF Color Check.exe
+dist\PDF Color Check\PDF Color Check.exe   (the app)
+dist\PDF-Color-Check-Windows.zip           (release-ready zip)
 ```
 
-To run it on yet another Windows PC, zip and copy the whole
-`dist\PDF Color Check` folder, then launch `PDF Color Check.exe` inside it.
-Windows SmartScreen may warn the first time (unsigned app) — click *More info →
-Run anyway*.
+To run it on yet another Windows PC, copy `dist\PDF-Color-Check-Windows.zip`,
+unzip it, and launch `PDF Color Check.exe` inside the folder. Windows
+SmartScreen may warn the first time (unsigned app) — click *More info → Run
+anyway*.
 
 ## Releases (pre-built downloads)
 
 The built apps are **not** committed to the repo (binaries don't belong in
 git). To share a ready-to-run app so others don't have to build it, attach the
-built artifacts to a [GitHub Release](https://github.com/eddyidno1/PREPRESS-PDF-COLOR-DETECTOR/releases):
-build on each OS, zip the output (`PDF Color Check.app` on macOS, the
-`dist\PDF Color Check` folder on Windows), and upload the zips to a new release.
-Users then download and run them directly — no Python needed.
+built artifacts to a [GitHub Release](https://github.com/eddyidno1/PREPRESS-PDF-COLOR-DETECTOR/releases).
+On Windows, `build_windows.bat` already produces an upload-ready
+`dist\PDF-Color-Check-Windows.zip`; on macOS, zip the app with
+`ditto -c -k --sequesterRsrc --keepParent "dist/PDF Color Check.app" dist/PDF-Color-Check-macOS.zip`.
+Upload the zip(s) to a release and users download and run them directly — no
+Python needed.
 
 ## Notes & limitations
 
