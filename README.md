@@ -93,6 +93,15 @@ To run it on yet another Windows PC, zip and copy the whole
 Windows SmartScreen may warn the first time (unsigned app) — click *More info →
 Run anyway*.
 
+## Releases (pre-built downloads)
+
+The built apps are **not** committed to the repo (binaries don't belong in
+git). To share a ready-to-run app so others don't have to build it, attach the
+built artifacts to a [GitHub Release](https://github.com/eddyidno1/PREPRESS-PDF-COLOR-DETECTOR/releases):
+build on each OS, zip the output (`PDF Color Check.app` on macOS, the
+`dist\PDF Color Check` folder on Windows), and upload the zips to a new release.
+Users then download and run them directly — no Python needed.
+
 ## Notes & limitations
 
 - **Text bounding boxes are approximate** (we don't load per-glyph font
