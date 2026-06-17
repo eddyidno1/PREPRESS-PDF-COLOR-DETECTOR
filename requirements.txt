@@ -1,0 +1,4 @@
+pikepdf>=8.0
+pymupdf>=1.23
+tkinterdnd2>=0.4
+reportlab>=4.0

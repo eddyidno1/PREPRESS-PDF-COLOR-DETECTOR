@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+tests/fixtures/
+*_color_report.pdf
+build/
+dist/
+*.spec
+.venv/
+.DS_Store
+**/.DS_Store
