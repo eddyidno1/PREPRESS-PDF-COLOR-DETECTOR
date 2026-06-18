@@ -28,6 +28,23 @@ PASS_BG = "#1f7a33"
 FAIL_BG = "#b21f1f"
 
 
+def _resource(*parts):
+    """Locate a bundled data file, both when frozen and from source."""
+    base = getattr(sys, "_MEIPASS", os.path.dirname(os.path.dirname(__file__)))
+    return os.path.join(base, *parts)
+
+
+def _set_window_icon(root):
+    png = _resource("assets", "icon.png")
+    if os.path.exists(png):
+        try:
+            img = tk.PhotoImage(file=png)
+            root.iconphoto(True, img)
+            root._icon_ref = img  # keep a reference so it isn't garbage-collected
+        except Exception:
+            pass
+
+
 def _open_file(path):
     try:
         if sys.platform == "darwin":
@@ -143,6 +160,7 @@ class App:
 
 def main():
     root = TkinterDnD.Tk() if _HAS_DND else tk.Tk()
+    _set_window_icon(root)
     App(root)
     # Smoke-test hook: launch, then quit, so packaging can be verified
     # headlessly. If the env var is a PDF path, run a real analyze->report

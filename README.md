@@ -63,9 +63,14 @@ checkpdf/
 tests/
   make_fixtures.py  # build known CMYK / RGB / spot test PDFs
   test_detector.py  # verdict, finding counts, bbox accuracy
+assets/
+  make_icon.py      # regenerates the app icon (needs Pillow)
+  icon.png/.ico/.icns  # app icon, embedded by build.py
 ```
 
-Run the tests with `python3 -m pytest tests/`.
+Run the tests with `python3 -m pytest tests/`. To change the app icon, edit and
+re-run `python assets/make_icon.py` (regenerates the .png/.ico/.icns), then
+rebuild.
 
 ## Building the standalone app
 
