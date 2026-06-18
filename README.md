@@ -80,9 +80,13 @@ python3 build.py          # -> dist/PDF Color Check.app
 ```
 
 **Windows:** copy this whole project folder to a Windows PC that has
-[Python 3.10+](https://www.python.org/downloads/) installed (tick *"Add Python
-to PATH"* in the installer), then **double-click `build_windows.bat`**. It
-installs the dependencies, builds the app, and zips it:
+**64-bit Python 3.10–3.13** installed (tick *"Add Python to PATH"* in the
+installer). Note the PDF libraries ship 64-bit wheels only for 3.10–3.13 —
+**Python 3.14+ or 32-bit Python will not work**; if that's all you have, install
+the [64-bit Python 3.12](https://www.python.org/downloads/release/python-3129/)
+("Windows installer (64-bit)"). Then **double-click `build_windows.bat`** — it
+auto-selects a compatible interpreter, installs the dependencies, builds the
+app, and zips it:
 
 ```
 dist\PDF Color Check\PDF Color Check.exe   (the app)
